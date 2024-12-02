@@ -22,6 +22,8 @@ const { CHAT_ALIGN, MODE, SEND_HOT_KEY, MESSAGE_STATUS } = strings;
 class Chat extends BaseComponent<ChatProps, ChatState> {
 
     static __SemiComponentName__ = "Chat";
+    // dragStatus: Whether the component contains the dragged object  
+    dragStatus = false;
 
     containerRef: React.RefObject<HTMLDivElement>;
     animation: any;
@@ -192,7 +194,9 @@ class Chat extends BaseComponent<ChatProps, ChatState> {
             },
             getDropAreaElement: () => {
                 return this.dropAreaRef?.current;
-            }
+            },
+            getDragStatus: () => this.dragStatus,
+            setDragStatus: (status: boolean) => { this.dragStatus = status; },
         };
     }
 
@@ -228,7 +232,7 @@ class Chat extends BaseComponent<ChatProps, ChatState> {
                     if (oldChats.length === 0 || newLastChat.id !== oldLastChat.id) {
                         shouldScroll = true;
                     }
-                } else if (newChats.length === oldChats.length &&
+                } else if (newChats.length === oldChats.length && newChats.length && 
                     (newLastChat.status !== 'complete' || newLastChat.status !== oldLastChat.status)
                 ) {
                     shouldScroll = true;
@@ -301,6 +305,8 @@ class Chat extends BaseComponent<ChatProps, ChatState> {
                 className={cls(`${prefixCls}`, className)}
                 style={style}
                 onDragOver={this.foundation.handleDragOver}
+                onDragStart={this.foundation.handleDragStart}
+                onDragEnd={this.foundation.handleDragEnd}
             >
                 {uploadAreaVisible && <div
                     ref={this.dropAreaRef}

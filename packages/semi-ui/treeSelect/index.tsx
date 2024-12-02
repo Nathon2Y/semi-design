@@ -1288,12 +1288,12 @@ class TreeSelect extends BaseComponent<TreeSelectProps, TreeSelectState> {
             disabled,
             preventScroll,
         } = this.props;
+        const { inputValue, inputTriggerFocus } = this.state;
         const isDropdownPositionSearch = searchPosition === strings.SEARCH_POSITION_DROPDOWN;
         const inputcls = cls({
             [`${prefixTree}-input`]: isDropdownPositionSearch,
             [`${prefixcls}-inputTrigger`]: !isDropdownPositionSearch
         });
-        const { inputValue } = this.state;
         const baseInputProps = {
             value: inputValue,
             className: inputcls,
@@ -1314,6 +1314,7 @@ class TreeSelect extends BaseComponent<TreeSelectProps, TreeSelectState> {
         const wrapperCls = cls({
             [`${prefixTree}-search-wrapper`]: isDropdownPositionSearch,
             [`${prefixcls}-triggerSingleSearch-wrapper`]: !isDropdownPositionSearch && !multiple,
+            [`${prefixcls}-triggerSingleSearch-upper`]: !isDropdownPositionSearch && inputTriggerFocus,
         });
         const useCusSearch = typeof searchRender === 'function' || typeof searchRender === 'boolean';
         if (useCusSearch && !searchRender) {
@@ -1346,6 +1347,9 @@ class TreeSelect extends BaseComponent<TreeSelectProps, TreeSelectState> {
 
     renderEmpty = () => {
         const { emptyContent } = this.props;
+        if (emptyContent === null) {
+            return null;
+        }
         if (emptyContent) {
             return <TreeNode empty emptyContent={this.props.emptyContent} />;
         } else {
@@ -1490,14 +1494,15 @@ class TreeSelect extends BaseComponent<TreeSelectProps, TreeSelectState> {
             renderLabel,
             renderFullLabel,
             checkRelation,
+            emptyContent
         } = this.props;
         const wrapperCls = cls(`${prefixTree}-wrapper`);
-        const listCls = cls(`${prefixTree}-option-list`, {
-            [`${prefixTree}-option-list-block`]: true,
-        });
         const searchNoRes = Boolean(inputValue) && !filteredKeys.size;
         const noData = isEmpty(flattenNodes) || (showFilteredOnly && searchNoRes);
         const isDropdownPositionSearch = searchPosition === strings.SEARCH_POSITION_DROPDOWN;
+        const listCls = cls(`${prefixTree}-option-list ${prefixTree}-option-list-block`, {
+            [`${prefixTree}-option-list-hidden`]: emptyContent === null && noData,
+        });
         return (
             <TreeContext.Provider
                 value={{

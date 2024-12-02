@@ -16,10 +16,132 @@ Version：Major.Minor.Patch (follow the **Semver** specification)
 
 ---
 
+#### 🎉 2.71.0-beta.0 (2024-12-02)
+- 【Feat】
+    - Table added shouldCellUpdate API, which is used to customize whether cells need to be re-rendered or not. [#2584](https://github.com/DouyinFE/semi-design/pull/2584)
+    - Cascader supports the checkRelation API for setting the relevance of options  [#2582](https://github.com/DouyinFE/semi-design/issues/2582)
+    - Highlight supports using different highlight styles for different keywords [#2600](https://github.com/DouyinFE/semi-design/pull/2600)
+    - `@douyinfe/semi-icons-lab` add new color icons： IconChart、IconChat、IconCodeHighlight、IconLottie、IconMarkdown、IconPincode、IconVersionOne、IconWebComponents、IconJsonViewer [#2583](https://github.com/DouyinFE/semi-design/pull/2583)
+- 【Chore】
+    - The digital precision of the SVG path in @douyinfe/semi-icons has been modified, keeping two decimal places. The volume of the minimized package for all icons has been reduced from 450 kb to 278 kb [#2583](https://github.com/DouyinFE/semi-design/pull/2583)
+    - Fixed type error reporting for the Lottie component [#2593](https://github.com/DouyinFE/semi-design/pull/2593)
+- 【Perf】
+    - The logic related to Select's renderOption will be postponed until after the candidate options are displayed. Reduce unnecessary rendering. [#2598](https://github.com/DouyinFE/semi-design/issues/2598)
+- 【Fix】
+    - Fixed the problem of incorrect ellipsis calculation when the width of `Typography` with ellipsis in JavaScript is not set. [#2591](https://github.com/DouyinFE/semi-design/issues/2591)
+    - Fix the error reporting of the `table` in `MarkdownRender` when the syntax of some markdown content is incorrect, and add a fallback attempt. [#2590](https://github.com/DouyinFE/semi-design/pull/2590)
+
+
+#### 🎉 2.70.1 (2024-11-25)
+- 【Fix】
+    - Fixed the problem that the URL of the file attachment in the Chat component's dialog box was incorrect, causing the file to fail to open when clicking on the file [#2589](https://github.com/DouyinFE/semi-design/pull/2589)
+
+#### 🎉 2.70.0 (2024-11-22)
+- 【Fix】
+    - Fixed an issue where the placement area was incorrectly displayed when dragging the internal files of the Chat component [#2569](https://github.com/DouyinFE/semi-design/issues/2569)
+
+#### 🎉 2.70.0-beta.0 (2024-11-18)
+- 【Fix】
+    - When all items except the disabled item in the left panel of transfer are selected, the operation button should display Cancel all selections  [#2575](https://github.com/DouyinFE/semi-design/issues/2575)
+    - fix resizeItem size offset caused by float，invalid min/max setting caused by browser resizing and incorrect behavior in react strictMode  [@Nathon2Y](https://github.com/Nathon2Y)
+    - Fix the problem that the placeholder of TreeSelect is blocked when single selection and search box are in trigger,  affecting versions v2.61.0 - 2.69.0
+- 【Feat】
+    - direction in ResizeGroup can be dynamic [@Nathon2Y](https://github.com/Nathon2Y)
+    - MarkdownRender adds the remarkGfm switch to prevent errors reported by lower versions of Safari that do not support lookaround assertions
+
+#### 🎉 2.69.2 (2024-11-19)
+- 【Fix】
+    - Fixed the problem that the covered content will be revealed in the table header that can be clicked to trigger sorting，Affected versions 2.65.0-2.69.1
+
+#### 🎉 2.69.1 (2024-11-15)
+- 【Fix】
+    - fix the issue that MonthRange DatePicker does not jump when clicking on a non-disabled year when there is a disabledDate
+    - Fixed the problem that when ArrayField is conditionally rendered, the first click of add fails to add rows correctly.
+    - fixed incorrect translation of Table pageText in Japanese scenarios
+
+#### 🎉 2.69.0 (2024-11-08)
+- 【Fix】
+    - The clip-rule & stroke-width in the @douyinfe/semi-illustrations package are modified to clipRule & strokeWidth
+
+#### 🎉 2.69.0-beta.0 (2024-11-04)
+- 【Feat】
+    - In Chat's custom rendering message box, renderChatBoxAvatar adds message parameter. [#2557](https://github.com/DouyinFE/semi-design/pull/2557)
+    - Add defaultActionsObj parameter to renderChatBoxContent in Chat's custom rendering session box to reveal detailed node parameter information [#2557](https://github.com/DouyinFE/semi-design/pull/2557)
+    - Chat's custom rendering input box adds the detailProps parameter to transmit detailed node parameter information [#2557](https://github.com/DouyinFE/semi-design/pull/2557)
+    - Navigation adds subDropdownProps support [#2555](https://github.com/DouyinFE/semi-design/pull/2555)
+- 【Fix】
+    - Fixed a TypeError in Chat's message comparison logic when the previous and later messages are different empty arrays [#2557](https://github.com/DouyinFE/semi-design/pull/2557)
+
+#### 🎉 2.68.4 (2024-11-04)
+- 【Fix】
+    - Fixed the issue with Chat Foundation where the React-specific event.persist call causes compatibility problems with adapters for other frameworks. [#2543](https://github.com/DouyinFE/semi-design/pull/2543) [@rashagu](https://github.com/rashagu)
+- 【Style】
+    - Fixed the issue where the placeholder opacity is incorrect after clicking the clearIcon and losing focus when both filter and showClear are enabled in Select. [#2547](https://github.com/DouyinFE/semi-design/pull/2547)
+    - Modified the align-items property of the Chat component styles from start/end to flex-start/flex-end to avoid potential CSS compilation warnings in some projects. [2546](https://github.com/DouyinFE/semi-design/pull/2546)
+
+#### 🎉 2.68.3 (2024-10-23)
+- 【Fix】
+    - Fixed the issue of incorrect option text display after clicking the expand button in the search state when `keyMaps` is set for `TreeSelect`.[#2541](https://github.com/DouyinFE/semi-design/pull/2541) 
+
+#### 🎉 2.68.2 (2024-10-21)
+- 【Fix】
+    - fix `$z-resizable_handler` token undefined issue, affecting versions v2.68.0-beta.0 - 2.68.1  [#2539](https://github.com/DouyinFE/semi-design/issues/2539) 
+
+#### 🎉 2.68.0 (2024-10-18)
+- 【Fix】
+    - fix IllustrationFailure and IllustrationNoContent curves are not completely closed in light mode
+    - fixed Table typings not work bug caused by react-window dependency  [#2477](https://github.com/DouyinFE/semi-design/issues/2477)
+
+#### 🎉 2.68.0-beta.0 (2024-10-16)
+- 【New Component】
+    - Added a resizable box component that adjusts its size based on user mouse drag actions. **Component adds Token `z-resizable_handler` (if the user uses a custom theme, they need to republish the theme to obtain the token)**[@Nathon2Y](https://github.com/Nathon2Y) [#2458](https://github.com/DouyinFE/semi-design/pull/2458)
+- 【Feat】
+    - Datepicker's onClickoutSide adds event parameter [#2531](https://github.com/DouyinFE/semi-design/pull/2531)
+    - Cascader adds expandIcon API to support user-defined expansion icons  [#2513](https://github.com/DouyinFE/semi-design/issues/2513)
+
+#### 🎉 2.67.2 (2024-10-16)
+- 【Fix】
+    - Fixed the phenomenon that the background color does not match expectations in some special theme package configurations when Select disabled and focus is disabled [#2532](https://github.com/DouyinFE/semi-design/pull/2532)
+    - fix icon Spin uses a fixed id, resulting in an unexpected display in Tabs [#2526](https://github.com/DouyinFE/semi-design/pull/2526)
+    - Fixed the issue of incorrect width of Cascader panel icon, affecting versions 2.67.0～2.67.1 [#2529](https://github.com/DouyinFE/semi-design/pull/2529)
+- 【Design Token】
+    - Select add token： `$color-select_input_disabled-border-focus`、`$color-select_input_disabled-border-focus`
+     - Newly added $width-cascader-option-icon is used to represent the width of the icon in the panel[#2529](https://github.com/DouyinFE/semi-design/pull/2529)
+
+#### 🎉 2.67.1 (2024-10-11)
+- 【Fix】
+    - Fixed the issue that after closing the Select popup using the close method, clicking the outer area cannot remove the focus style
+    - Fixed Datepicker selected value does not show when value is controlled （affects v2.64 ~ v2.67）  [#2521](https://github.com/DouyinFE/semi-design/issues/2521)
+    - Fixed the issue that Rspack plugin does not work on win32 platform
+
+#### 🎉 2.67.0 (2024-09-27)
+- 【Fix】
+    - Fix Typography error in omitting calculation when the strong attribute is true [@pandoralink](https://github.com/pandoralink) [#2506](https://github.com/DouyinFE/semi-design/pull/2506)
+
+#### 🎉 2.67.0-beta.0 (2024-09-23)
+- 【Feat】
+    - Form adds onErrorChange callback [#2484](https://github.com/DouyinFE/semi-design/pull/2484)
+    - Feat: The Chat component supports custom rendering of dividing lines through renderDivider [#2471](https://github.com/DouyinFE/semi-design/issues/2474)
+- 【Fix】
+    - Fixed the issue where onChange does not trigger in PinCode in uncontrolled mode [#2509](https://github.com/DouyinFE/semi-design/pull/2509)
+    - fix the issue where onChange does not trigger when PinCode value is empty string [#2502](https://github.com/DouyinFE/semi-design/issues/2502) [@koderx](https://github.com/koderx)
+    - Fixed AutoComplete option when more than one page, when using keyboard ArrowUp, ArrowDown switch can not automatically scroll to view issue [#1530](https://github.com/DouyinFE/semi-design/issues/1530)
+    - Fix the problem that the case of the child component className of AutoComplete is inconsistent with the parent component, and the consistent is changed to lowercase (`.semi-autoComplete-option` - > `.semi-autocompelte-option`)[#2501](https://github.com/DouyinFE/semi-design/pull/2501)
+    - Modify the behavior of Cascader, TreeSelect when emptyContent is null, consistent with Select [#2476](https://github.com/DouyinFE/semi-design/pull/2476)
+    - Fixed the issue that Select fails to automatically scroll to view after using the keyboard up and down keys to select options when using IrenderOptionItem [#2263](https://github.com/DouyinFE/semi-design/issues/2263)
+    - Fixed Upload in React StrictMode request can not be post correctly (impact v2.64.0-2.66.1) [#2410](https://github.com/DouyinFE/semi-design/issues/2410)
+    - Fixed the problem that when Cascader has suffix and showClear is set, the position of the clear icon and the position of the clear icon are different [#2493](https://github.com/DouyinFE/semi-design/pull/2493)
+- 【Style】
+    - Modify the image display in the Chat component chat box and the uploaded image display effect in the input box, from filling to maintaining width-to-height ratio filling (object-fit from fill -> cover), prevent image deformation [#2496](https://github.com/DouyinFE/semi-design/pull/2496)
+    - Keep the content area and icon spacing in Cascader's trigger consistent with select/treeSelect  [#2472](https://github.com/DouyinFE/semi-design/issues/2472)
+    - Fixed the issue where the style of Cascader panel options does not meet expectations in rtl mode [#2475](https://github.com/DouyinFE/semi-design/pull/2475)
+    - Modify the unreasonable naming of style names in Cascader, undisabled -> enable [#2494](https://github.com/DouyinFE/semi-design/pull/2494)
+    - Modify the problem that when suffix is ​​set in Select, the positional relationship between the suffix and the drop-down icon is not consistent with TreeSelect/Cascader. (If you have other position requirements, you can adjust the position by setting the order attribute of flex) [#2493](https://github.com/DouyinFE/semi-design/pull/2493)
+    - Fixed the problem that the rounded corners of InputNumber, DatePicker, Time Pick, and AutoComplete located in the middle of the InputGroup are not 0 [#2489](https://github.com/DouyinFE/semi-design/issues/2489)
+
 #### 🎉 2.66.1 (2024-09-12)
 - 【Fix】
   - Optimized Datepicker Copywriting in Malay (ms_MY), Russian(ru_RU), Vietnamese(vi_VN), Arabic(ar) Monday - Sunday. Optimize the display of text in Japanese, Indonesian, and Vietnamese in the lower left corner of the Table. [#2486](https://github.com/DouyinFE/semi-design/pull/2486)
-
 
 #### 🎉 2.66.0 (2024-09-10)
 - 【Fix】
